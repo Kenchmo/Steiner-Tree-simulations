@@ -5,28 +5,27 @@
 //  Created by Lufan Zhou on 2/20/17.
 //
 
-#ifndef points_hpp
-#define points_hpp
+#ifndef points_h
+#define points_h
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 
 class Point{
 public:
-    
-    float x, y;
-    string tag;
+
     Point(){
         x = 0;
         y = 0;
     };
-    Point(float newx, float newy, string newtag){
+    Point(float newx, float newy, bool interm){
         x = newx;
         y = newy;
-        tag = newtag;
+        intermediate = interm;
     };
     ~Point(){};
     Point & operator=(const Point & other){
@@ -43,10 +42,16 @@ public:
     void copy(const Point & other){
         x = other.x;
         y = other.y;
-        tag = other.tag;
+        
     }
-
+    
+    
+    
+    float x, y;
+    bool intermediate;
+    vector<Point*> neighbors;
+    
 
 };
 
-#endif /* points_hpp */
+#endif /* points_h */

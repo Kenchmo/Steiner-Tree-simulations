@@ -6,4 +6,4 @@
 //  Copyright © 2017 Lufan Zhou. All rights reserved.
 //
 
-#include "points.hpp"
+#include "points.h"

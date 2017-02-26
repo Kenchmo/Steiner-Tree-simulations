@@ -8,16 +8,15 @@
 
 #ifndef drawer_h
 #define drawer_h
-#include "points.hpp"
-#include "intermediate_points.hpp"
+
+#include "png.h"
+#include "points.h"
 
 
-void drawer(vector<Points>, vector<InterPoints>){
-    
+void setdot(int x, int y, PNG & canvas);
 
+void setline(int x1, int y1, int x2, int y2, PNG & canvas);
 
-
-
-}
+void setpixel(int x, int y, PNG & canvas, int r, int g, int b);
 
 #endif /* drawer_h */
