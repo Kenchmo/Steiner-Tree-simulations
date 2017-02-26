@@ -39,7 +39,23 @@ void setdot(int x, int y, PNG & canvas){
 
 
 
+void setline(const vector<Point*> & v, const vector<pair<int, int>> & vline, PNG & canvas){
+    int len = vline.size();
+    int width = canvas.width();
+    int height = canvas.height();
+    for(int i = 0; i < len; i++){
+        Point* origin = v[vline[i].first];
+        Point* dest = v[vline[i].second];
+
+
+        setline(int(origin->x * width), int(origin->y * height), int(dest->x * width), int(dest->y * height), canvas);
+    }
+}
+
+
+
 void setline(int x1, int y1, int x2, int y2, PNG & canvas){
+
     if(x1 > x2){
         int temp = x1;
         x1 = x2;
@@ -49,21 +65,17 @@ void setline(int x1, int y1, int x2, int y2, PNG & canvas){
         y1 = y2;
         y2 = temp;
     }
+    if(x1 != x2){
+        float k = float(y2-y1)/(x2-x1);
+        float c = y1 - x1 * k;
 
-	float k = float(y2-y1)/(x2-x1);
-	float c = y1 - x1 * k;
-    // int width = canvas.width();
-    // int height = canvas.height();
 
-	for(int i = x1; i <= x2; ++i){
-		int j = k * i + c;
-        setpixel(i, j, canvas, 37,61,79);
-        // if(i != 0) setpixel(i-1, j, canvas, 25,53,21);
-        // if(i+1 < width) setpixel(i+1, j, canvas, 25,53,21);
-        // if(j != 0) setpixel(i, j-1, canvas, 25,53,21);
-        // if(j+1 < height) setpixel(i, j+1, canvas, 25,53,21);       
-
+        for(int i = x1; i <= x2; ++i){
+            int j = k * i + c;
+            setpixel(i, j, canvas, 37,61,79);    
+        }
     }
+
 
     if(y1 > y2){
         int temp = x1;
@@ -74,15 +86,14 @@ void setline(int x1, int y1, int x2, int y2, PNG & canvas){
         y1 = y2;
         y2 = temp;
     }
-    k = float(x2-x1)/(y2-y1);
-    c = x1 - y1*k;
-    for(int i = y1; i <= y2; ++i){
-        int j = k*i+ c;
-        setpixel(j, i, canvas, 37,61,79);
+    if(y1 != y2){
+        float ky = float(x2-x1)/(y2-y1);
+        float cy = x1 - y1*ky;
+        for(int i = y1; i <= y2; ++i){
+            int j = ky*i+ cy;
+            setpixel(j, i, canvas, 37,61,79);
+        }
     }
-
-  
-
 }
 
 

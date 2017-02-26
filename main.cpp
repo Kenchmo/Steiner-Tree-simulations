@@ -28,11 +28,12 @@ using namespace std;
 
 int main() {
     
-    size_t width = 10000;   
-    size_t height = 6000;
+    size_t width = 1000;   
+    size_t height = 1000;
     
-    const int npoints = 20000;  // number of points
+    const int npoints = 100;  // number of points
     vector<Point *> v;
+    vector<pair<int, int>> vline;
     // default_random_engine generator;
     // uniform_real_distribution<double> distribution(0.0,1.0);
     srand (time(NULL));
@@ -40,40 +41,34 @@ int main() {
         
         double x = double(rand() % width) / width;
         double y = double(rand() % height) / height;
-        Point * ptr = new Point(x, y, false);
+        Point * ptr = new Point(x, y, false, false);
         v.push_back(ptr);
     }
-    
-    
 
+    construct_triangle(v, vline);
+    // int len = vline.size();
+    // for(int i = 0; i < len; ++i){
+    //   cout<<vline[i].first<<" "<<vline[i].second<<endl;
+    // }
 
-   PNG output(width, height);
-   
-   
-   for (size_t i = 0; i < width; ++i){
-       for (size_t j = 0; j < height; ++j){  //flipping by 180 degrees require that both
-           output(i, j)->red = 0;
-           output(i, j)->green = 11;
-           output(i, j)->blue = 35;
-           output(i, j)->alpha = 255;
-       }
-   }
-   int lpx, lpy;
-   int px, py;
-   for(int i = 0; i < npoints; ++i){
-        if(i!=0){
-          lpx = px;
-          lpy = py;
+    PNG output(width, height);
+    for (size_t i = 0; i < width; ++i){
+        for (size_t j = 0; j < height; ++j){  
+            output(i, j)->red = 0;
+            output(i, j)->green = 11;
+            output(i, j)->blue = 35;
+            output(i, j)->alpha = 255;
         }
+    }
 
-        px = int(v[i]->x*width);
-        py = int(v[i]->y*height);
+    setline(v, vline, output);
 
-
-        setdot(px, py, output);
-        //if(i!=0 && i < 7) setline(lpx,lpy,px,py,output);
-
-   }
+    int px, py;
+    for(int i = 0; i < npoints; ++i){
+      px = int(v[i]->x*width);
+      py = int(v[i]->y*height);
+      setdot(px, py, output);
+    }
 
    output.writeToFile("out.png");
 

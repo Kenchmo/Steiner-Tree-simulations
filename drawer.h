@@ -14,9 +14,8 @@
 
 
 void setdot(int x, int y, PNG & canvas);
-
+void setline(const vector<Point*> & v, const vector<pair<int, int>> & vline, PNG & canvas);
 void setline(int x1, int y1, int x2, int y2, PNG & canvas);
-
 void setpixel(int x, int y, PNG & canvas, int r, int g, int b);
 
 #endif /* drawer_h */
