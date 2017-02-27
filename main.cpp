@@ -15,8 +15,8 @@
 #include <sstream>
 #include <fstream>
 
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <stdlib.h>   
+#include <time.h> 
 
 #include "drawer.h"
 #include "points.h"
@@ -46,10 +46,7 @@ int main() {
     }
 
     construct_triangle(v, vline);
-    // int len = vline.size();
-    // for(int i = 0; i < len; ++i){
-    //   cout<<vline[i].first<<" "<<vline[i].second<<endl;
-    // }
+
 
     PNG output(width, height);
     for (size_t i = 0; i < width; ++i){

@@ -72,7 +72,7 @@ void setline(int x1, int y1, int x2, int y2, PNG & canvas){
 
         for(int i = x1; i <= x2; ++i){
             int j = k * i + c;
-            setpixel(i, j, canvas, 37,61,79);    
+            setpixel(i, j, canvas, 97, 130, 183);    
         }
     }
 
@@ -91,7 +91,7 @@ void setline(int x1, int y1, int x2, int y2, PNG & canvas){
         float cy = x1 - y1*ky;
         for(int i = y1; i <= y2; ++i){
             int j = ky*i+ cy;
-            setpixel(j, i, canvas, 37,61,79);
+            setpixel(j, i, canvas, 97, 130, 183);
         }
     }
 }

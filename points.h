@@ -60,13 +60,14 @@ public:
 
 };
 
-void construct_polygon(const vector<Point*> & v, vector<pair<int, int>> & vline);
+//void construct_polygon(const vector<Point*> & v, vector<pair<int, int>> & vline);
 void construct_triangle(const vector<Point*> & v, vector<pair<int, int>> & vline);
+void triangle_helper(const vector<Point*> & v, vector<pair<int, int>> & vline, int prev1, int prev2, int back);
 // find nearest point for one point
-int find_nearest(const vector<Point*> & pts, int origin);
+int find_nearest(const vector<Point*> & v, int origin);
 //find nearest point for two points
-int find_nearest(const vector<Point*> pts, int first, int second);
-
-double dist(const vector<Point*> & pts, int first, int second);
+int find_nearest(const vector<Point*> v, int first, int second);
+double rad(const vector<Point*> & v, int i, int j, int k);
+double dist(const vector<Point*> & v, int first, int second);
 
 #endif /* points_h */
