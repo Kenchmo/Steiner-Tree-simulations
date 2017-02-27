@@ -60,14 +60,21 @@ public:
 
 };
 
-//void construct_polygon(const vector<Point*> & v, vector<pair<int, int>> & vline);
 void construct_triangle(const vector<Point*> & v, vector<pair<int, int>> & vline);
-void triangle_helper(const vector<Point*> & v, vector<pair<int, int>> & vline, int prev1, int prev2, int back);
+
+void triangle_helper(const vector<Point*> & v, vector<pair<int, int>> & vline, int prev1, int prev2);
+
 // find nearest point for one point
 int find_nearest(const vector<Point*> & v, int origin);
+
 //find nearest point for two points
 int find_nearest(const vector<Point*> v, int first, int second);
-double rad(const vector<Point*> & v, int i, int j, int k);
-double dist(const vector<Point*> & v, int first, int second);
 
+//the square of radius of the circle formed by the three points
+double rad(const vector<Point*> & v, int i, int j, int k);
+
+double dist(const vector<Point*> & v, int first, int second);
+bool on_segment(const vector<Point*> & v, int p, int q, int r);
+int orientation(const vector<Point*> & v, int p, int q, int r);
+bool check_overlap(const vector<Point*> & v, int p1, int q1, int p2, int q2);
 #endif /* points_h */
