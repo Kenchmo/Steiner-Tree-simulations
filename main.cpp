@@ -28,10 +28,10 @@ using namespace std;
 
 int main() {
     
-    size_t width = 1000;   
-    size_t height = 1000;
+    size_t width = 5000;   
+    size_t height = 5000;
     
-    const int npoints = 100;  // number of points
+    const int npoints = 5000;  // number of points
     vector<Point *> v;
     vector<pair<int, int>> vline;
     // default_random_engine generator;
