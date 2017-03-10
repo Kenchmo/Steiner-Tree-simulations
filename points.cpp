@@ -20,7 +20,6 @@
 // }
 
 
-
 void construct_triangle(const vector<Point*> & v, vector<pair<int, int>> & vline){
 
 	int prev1 = 0;
@@ -51,6 +50,7 @@ void triangle_helper(const vector<Point*> & v, vector<pair<int, int>> & vline, i
 	// if(thisdist > testdist1 || thisdist > testdist2) return;
 
 	//avoid overlap lines
+	
 	int len = vline.size();
 	for(int i = 0; i < len; ++i){
 		if(check_overlap(v, vline[i].first, vline[i].second, cur, prev1) ||
